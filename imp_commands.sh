@@ -10,3 +10,12 @@ kubectl config get-clusters
 kubectl config use-context cluster1
 
 
+# approve csr:
+kubectl certificate approve <name>
+
+#deny csr:
+kubectl certificate deny <name>
+
+
+kubectl config --kubeconfig=my-kube-config use-context research
+
