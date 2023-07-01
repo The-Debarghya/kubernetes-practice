@@ -19,3 +19,9 @@ kubectl certificate deny <name>
 
 kubectl config --kubeconfig=my-kube-config use-context research
 
+
+kubectl config set-credentials martin --client-key=martin.key --client-certificate=martin.crt --embed-certs=false
+kubectl config set-credentials martin --client-certificate ./martin.crt --client-key ./martin.key
+
+
+kubectl logs <pod> -c <container/init-cont>
