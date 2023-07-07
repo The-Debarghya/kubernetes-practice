@@ -25,3 +25,7 @@ kubectl config set-credentials martin --client-certificate ./martin.crt --client
 
 
 kubectl logs <pod> -c <container/init-cont>
+# list all api-resources for a specific api-group
+kubectl api-resources --api-group=apps
+#for all api-resources
+kubectl api-resources --namespaced=true

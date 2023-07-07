@@ -1,4 +1,4 @@
-# kubernetes-practiceting
+# kubernetes-practicing
 
 ## important commands:
 
