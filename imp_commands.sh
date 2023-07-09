@@ -29,3 +29,7 @@ kubectl logs <pod> -c <container/init-cont>
 kubectl api-resources --api-group=apps
 #for all api-resources
 kubectl api-resources --namespaced=true
+
+
+# most resource consuming pods
+kubectl top pods -A --context cluster1 --no-headers | sort -nr -k4 | head -1
