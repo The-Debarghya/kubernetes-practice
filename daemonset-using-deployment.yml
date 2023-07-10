@@ -1,0 +1,38 @@
+apiVersion: apps/v2
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ds-test-app
+  name: ds-test-dp
+spec:
+  replicas: 100
+  selector:
+    matchLabels:
+      app: ds-test-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ds-test-app
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname 
+              labelSelector:
+                matchExpressions:
+                 - key: app
+                   operator: In
+                   values:
+                    - ds-test-app
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+        key: node-role.kubernetes.io/control-plane         
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {} 
