@@ -8,6 +8,12 @@
 - `/`: search
 - `x`: delete a character
 - `12x`: delete 12 characters
+- `gg`: Jump to top(actual)
+- `G`: Jump to bottom(actual)
+- `L`: Jump to bottom(visible)
+- `H`: Jump to top(visible)
+- `w`: traverse through words
+- `v`: visual mode(text selection)
 
 
 ## Terminal:

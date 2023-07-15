@@ -7,6 +7,13 @@
 kubectl -n elastic-stack exec -it app -- cat /log/app.log
 ```
 
-## missouts:
+## Vim setup:
 
-- encrypting secret data at rest
+```vimscript
+set tabstop=2
+set bs=2
+set shiftwidth=2
+set autoindent
+set number
+set expandtab
+```
