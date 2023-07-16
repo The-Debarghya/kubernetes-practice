@@ -19,3 +19,50 @@ spec:
       protocol: UDP
       
 # restricts all Pods in Namespace space1 to only have outgoing traffic to Pods in Namespace space2 . Incoming traffic not affected.
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: jonin-to-genin
+  namespace: jonin
+spec:
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+      - podSelector:
+          matchLabels:
+            rank: genin
+        namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: genin
+            
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: hokage-allow
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      rank: hokage
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: genin
+        podSelector:
+          matchLabels:
+            rank: genin
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: jonin
+        podSelector:
+          matchLabels:
+            rank: jonin
